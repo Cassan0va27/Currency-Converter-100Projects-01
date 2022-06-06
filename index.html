@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="text/javascript">
+      var currencyData = {
+        AED: {
+          AED: 1,
+          ARS: 32.8,
+          AUD: 0.37,
+          BGN: 0.5,
+          BRL: 1.31,
+          BSD: 0.27,
+          CAD: 0.34,
+          CHF: 0.26,
+          CLP: 221.41,
+          CNY: 1.81,
+          COP: 1028.86,
+          CZK: 6.25,
+          DKK: 1.88,
+          DOP: 15.01,
+          EGP: 5.07,
+          EUR: 0.25,
+          FJD: 0.58,
+          GBP: 0.22,
+          GTQ: 2.1,
+          INR: 21.07,
+          USD: 0.27,
+        },
+        ARS: {
+          AED: 0.03,
+          ARS: 1,
+          AUD: 0.011,
+          BGN: 0.015,
+          BRL: 0.04,
+          BSD: 0.0083,
+          CAD: 0.01,
+          CHF: 0.008,
+          CLP: 6.75,
+          CNY: 0.055,
+          COP: 31.37,
+          CZK: 0.19,
+          DKK: 0.057,
+          DOP: 0.46,
+          EGP: 0.15,
+          EUR: 0.0077,
+          FJD: 0.018,
+          GBP: 0.0066,
+          GTQ: 0.064,
+          INR: 0.64,
+          USD: 0.0083,
+        },
+        AUD: {
+          AED: 2.67,
+          ARS: 87.52,
+          AUD: 1,
+          BGN: 1.32,
+          BRL: 3.48,
+          BSD: 0.73,
+          CAD: 0.91,
+          CHF: 0.7,
+          CLP: 590.79,
+          CNY: 4.84,
+          COP: 2745.27,
+          CZK: 16.68,
+          DKK: 5.03,
+          DOP: 40.07,
+          EGP: 13.54,
+          EUR: 0.68,
+          FJD: 1.55,
+          GBP: 0.58,
+          GTQ: 5.6,
+          INR: 56.22,
+          USD: 0.73,
+        },
+        BGN: {
+          AED: 2.02,
+          ARS: 66.15,
+          AUD: 0.76,
+          BGN: 1,
+          BRL: 2.64,
+          BSD: 0.55,
+          CAD: 0.69,
+          CHF: 0.53,
+          CLP: 446.68,
+          CNY: 3.66,
+          COP: 2075.68,
+          CZK: 12.62,
+          DKK: 3.8,
+          DOP: 30.29,
+          EGP: 10.24,
+          EUR: 0.51,
+          FJD: 1.17,
+          GBP: 0.44,
+          GTQ: 4.24,
+          INR: 42.5,
+          USD: 0.55,
+        },
+        BRL: {
+          AED: 0.77,
+          ARS: 25.11,
+          AUD: 0.29,
+          BGN: 0.38,
+          BRL: 1,
+          BSD: 0.21,
+          CAD: 0.26,
+          CHF: 0.2,
+          CLP: 169.52,
+          CNY: 1.39,
+          COP: 787.73,
+          CZK: 4.79,
+          DKK: 1.44,
+          DOP: 11.5,
+          EGP: 3.89,
+          EUR: 0.19,
+          FJD: 0.45,
+          GBP: 0.17,
+          GTQ: 1.61,
+          INR: 16.13,
+          USD: 0.21,
+        },
+        BSD: {
+          AED: 3.67,
+          ARS: 120.42,
+          AUD: 1.38,
+          BGN: 1.82,
+          BRL: 4.8,
+          BSD: 1,
+          CAD: 1.26,
+          CHF: 0.96,
+          CLP: 813.03,
+          CNY: 6.66,
+          COP: 3778.05,
+          CZK: 22.96,
+          DKK: 6.92,
+          DOP: 55.14,
+          EGP: 18.64,
+          EUR: 0.93,
+          FJD: 2.13,
+          GBP: 0.79,
+          GTQ: 7.71,
+          INR: 77.36,
+          USD: 1.0,
+        },
+        CAD: {
+          AED: 2.92,
+          ARS: 95.83,
+          AUD: 1.09,
+          BGN: 1.45,
+          BRL: 3.82,
+          BSD: 0.8,
+          CAD: 1,
+          CHF: 0.76,
+          CLP: 646.77,
+          CNY: 5.3,
+          COP: 3005.48,
+          CZK: 18.27,
+          DKK: 5.5,
+          DOP: 43.86,
+          EGP: 14.83,
+          EUR: 0.74,
+          FJD: 1.7,
+          GBP: 0.63,
+          GTQ: 6.13,
+          INR: 61.54,
+          USD: 0.8,
+        },
+        CHF: {
+          AED: 3.83,
+          ARS: 95.83,
+          AUD: 1.44,
+          BGN: 1.9,
+          BRL: 5.01,
+          BSD: 1.04,
+          CAD: 1.31,
+          CHF: 1,
+          CLP: 849.07,
+          CNY: 6.95,
+          COP: 3945.59,
+          CZK: 23.98,
+          DKK: 7.22,
+          DOP: 57.58,
+          EGP: 19.47,
+          EUR: 0.97,
+          FJD: 2.23,
+          GBP: 0.83,
+          GTQ: 8.05,
+          INR: 80.78,
+          USD: 1.04,
+        },
+
+        CLP: {
+          AED: 0.0045,
+          ARS: 0.15,
+          AUD: 0.0017,
+          BGN: 0.0022,
+          BRL: 0.0059,
+          BSD: 0.0012,
+          CAD: 0.0015,
+          CHF: 0.0012,
+          CLP: 1,
+          CNY: 0.0082,
+          COP: 4.65,
+          CZK: 0.028,
+          DKK: 0.0085,
+          DOP: 0.068,
+          EGP: 0.023,
+          EUR: 0.0011,
+          FJD: 0.0026,
+          GBP: 0.00098,
+          GTQ: 0.0095,
+          INR: 0.095,
+          USD: 0.0012,
+        },
+
+        CNY: {
+          AED: 0.55,
+          ARS: 18.09,
+          AUD: 0.21,
+          BGN: 0.27,
+          BRL: 0.72,
+          BSD: 0.15,
+          CAD: 0.19,
+          CHF: 0.14,
+          CLP: 122.1,
+          COP: 567.39,
+          CNY: 1,
+          CZK: 3.45,
+          DKK: 1.04,
+          DOP: 8.28,
+          EGP: 2.8,
+          EUR: 0.14,
+          FJD: 0.32,
+          GBP: 0.12,
+          GTQ: 1.16,
+          INR: 11.62,
+          USD: 0.15,
+        },
+        CZK: {
+          AED: 0.16,
+          ARS: 5.24,
+          AUD: 0.06,
+          BGN: 0.079,
+          BRL: 0.21,
+          BSD: 0.044,
+          CAD: 0.055,
+          CHF: 0.042,
+          CLP: 35.4,
+          COP: 164.52,
+          CNY: 0.29,
+          CZK: 1,
+          DKK: 0.3,
+          DOP: 2.4,
+          EGP: 0.81,
+          EUR: 0.041,
+          FJD: 0.093,
+          GBP: 0.035,
+          GTQ: 0.34,
+          INR: 3.37,
+          USD: 0.044,
+        },
+
+        DKK: {
+          AED: 0.53,
+          ARS: 17.41,
+          AUD: 0.2,
+          BGN: 0.26,
+          BRL: 0.69,
+          BSD: 0.14,
+          CAD: 0.18,
+          CHF: 0.14,
+          CLP: 117.56,
+          COP: 546.3,
+          CNY: 0.96,
+          CZK: 3.32,
+          DKK: 1,
+          DOP: 7.97,
+          EGP: 2.7,
+          EUR: 0.13,
+          FJD: 0.31,
+          GBP: 0.11,
+          GTQ: 1.11,
+          INR: 11.2,
+          USD: 0.14,
+        },
+        DOP: {
+          AED: 0.067,
+          ARS: 2.18,
+          AUD: 0.025,
+          BGN: 0.033,
+          BRL: 0.087,
+          BSD: 0.018,
+          CAD: 0.023,
+          CHF: 0.017,
+          CLP: 14.85,
+          COP: 69.01,
+          CNY: 0.12,
+          CZK: 0.42,
+          DOP: 1,
+          DKK: 0.13,
+          EGP: 0.34,
+          EUR: 0.017,
+          FJD: 0.039,
+          GBP: 0.015,
+          GTQ: 0.14,
+          INR: 1.41,
+          USD: 0.018,
+        },
+
+        EGP: {
+          AED: 0.2,
+          ARS: 6.42,
+          AUD: 0.074,
+          BGN: 0.098,
+          BRL: 0.26,
+          BSD: 0.053,
+          CAD: 0.067,
+          CHF: 0.051,
+          CLP: 43.64,
+          COP: 202.79,
+          CNY: 0.36,
+          CZK: 1.23,
+          DKK: 0.37,
+          DOP: 2.94,
+          EUR: 0.05,
+          EGP: 1,
+          FJD: 0.11,
+          GBP: 0.043,
+          GTQ: 0.41,
+          INR: 4.16,
+          USD: 0.054,
+        },
+
+        EUR: {
+          AED: 3.95,
+          ARS: 128.69,
+          AUD: 1.48,
+          BGN: 1.96,
+          BRL: 5.16,
+          BSD: 1.07,
+          CAD: 1.35,
+          CHF: 1.03,
+          CLP: 875.17,
+          COP: 4066.83,
+          CNY: 7.17,
+          CZK: 24.7,
+          DKK: 7.44,
+          DOP: 58.94,
+          EUR: 1,
+          EGP: 20.05,
+          FJD: 2.3,
+          GBP: 0.86,
+          GTQ: 8.25,
+          INR: 83.36,
+          USD: 1.08,
+        },
+
+        FJD: {
+          AED: 1.72,
+          ARS: 56.42,
+          AUD: 0.65,
+          BGN: 0.85,
+          BRL: 2.25,
+          BSD: 0.47,
+          FJD: 1,
+          CAD: 0.59,
+          CHF: 0.45,
+          CLP: 380.84,
+          COP: 1769.74,
+          CNY: 3.12,
+          CZK: 10.75,
+          DKK: 3.24,
+          DOP: 25.65,
+          EGP: 8.73,
+          EUR: 0.44,
+          GBP: 0.37,
+          GTQ: 3.59,
+          INR: 36.28,
+          USD: 0.22,
+        },
+
+        GBP: {
+          AED: 1.72,
+          ARS: 56.42,
+          AUD: 0.65,
+          BGN: 0.85,
+          BRL: 2.25,
+          BSD: 0.47,
+          CAD: 0.59,
+          CHF: 0.45,
+          CLP: 380.84,
+          COP: 1769.74,
+          CNY: 3.12,
+          CZK: 10.75,
+          DKK: 3.24,
+          DOP: 25.65,
+          EGP: 8.73,
+          EUR: 0.44,
+          FJD: 0.37,
+          GBP: 1,
+          GTQ: 3.59,
+          USD: 0.01,
+          INR: 36.28,
+        },
+        GTQ: {
+          AED: 1.72,
+          ARS: 26.42,
+          AUD: 1.65,
+          BGN: 0.205,
+          BRL: 0.25,
+          BSD: 0.47,
+          CAD: 0.59,
+          CHF: 0.45,
+          CLP: 680.84,
+          COP: 169.74,
+          CNY: 31.12,
+          CZK: 0.75,
+          DKK: 1.24,
+          DOP: 30.65,
+          EGP: 81.73,
+          EUR: 4.4,
+          FJD: 0.37,
+          GBP: 1.19,
+          GTQ: 1,
+          USD: 0.0001,
+          INR: 362.28,
+        },
+        USD: {
+          AED: 3.67,
+          ARS: 120.67,
+          AUD: 1.39,
+          BGN: 1.82,
+          BRL: 4.77,
+          BSD: 1.0,
+          CAD: 1.26,
+          CHF: 0.96,
+          CLP: 811.81,
+          COP: 3772.33,
+          CNY: 6.66,
+          CZK: 23.01,
+          DKK: 6.94,
+          DOP: 55.2,
+          EGP: 18.63,
+          EUR: 4.4,
+          FJD: 2.18,
+          GBP: 0.8,
+          GTQ: 7.7,
+          INR: 77.69,
+          USD: 1,
+        },
+        INR: {
+          AED: 0.047,
+          ARS: 1.55,
+          AUD: 0.018,
+          BGN: 0.023,
+          BRL: 0.061,
+          BSD: 0.013,
+          CAD: 0.016,
+          CHF: 0.012,
+          CLP: 10.45,
+          COP: 48.55,
+          CNY: 0.086,
+          CZK: 0.3,
+          DKK: 0.089,
+          DOP: 0.71,
+          EGP: 0.24,
+          EUR: 0.012,
+          FJD: 0.028,
+          GBP: 0.01,
+          GTQ: 0.099,
+          USD: 0.013,
+          INR: 1,
+        },
+      };
+
+      var data = document.addEventListener("DOMContentLoaded", () => {
+        document
+          .getElementById("select-currency-one")
+          .addEventListener("input", handleSelectOne);
+
+        document
+          .getElementById("select-currency-two")
+          .addEventListener("input", handleSelectTwo);
+      });
+
+      function handleSelectOne(e) {
+        document.getElementById("selected-currency-one").innerHTML =
+          e.target.value;
+        setNumber();
+      }
+
+      function handleSelectTwo(e) {
+        document.getElementById("selected-currency-two").innerHTML =
+          e.target.value;
+        setNumber();
+      }
+
+      function setNumber() {
+        var selectedOne = document.getElementById("select-currency-one").value;
+        var selectedTwo = document.getElementById("select-currency-two").value;
+        var level1 = currencyData[selectedOne];
+        var level2 = level1[selectedTwo];
+        document.getElementById("selected-number").innerHTML = level2;
+      }
+
+      function conversion() {
+        var selectedOne = document.getElementById("select-currency-one").value;
+        var selectedTwo = document.getElementById("select-currency-two").value;
+        var amount = document.getElementById("inputNumber").value;
+        var level1 = currencyData[selectedOne];
+        var level2 = level1[selectedTwo];
+        console.log(document.getElementById("resultNumber"));
+        document.getElementById("resultNumber").value = amount * level2;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="main-body">
+      <div class="img">
+        <div class="img-image">
+          <img src="exchange.png" alt="Exchange Image" class="exchange-image" />
+        </div>
+        <div class="img-text">
+          <h1>Exchange Rate Calculator</h1>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="currency-one">
+          <select id="select-currency-one" class="select-currency">
+            <option value="AED">AED</option>
+            <option value="ARS">ARS</option>
+            <option value="AUD">AUD</option>
+            <option value="BGN">BGN</option>
+            <option value="BRL">BRL</option>
+            <option value="BSD">BSD</option>
+            <option value="CAD">CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CLP">CLP</option>
+            <option value="CNY">CNY</option>
+            <option value="COP">COP</option>
+            <option value="CZK">CZK</option>
+            <option value="DKK">DKK</option>
+            <option value="DOP">DOP</option>
+            <option value="EGP">EGP</option>
+            <option value="EUR">EUR</option>
+            <option value="FJD">FJD</option>
+            <option value="GBP">GBP</option>
+            <option value="GBP">GTQ</option>
+            <option value="USD" selected="">USD</option>
+            <option value="INR">INR</option>
+          </select>
+          <input type="number" class="select-input" id="inputNumber" />
+        </div>
+        <div class="main-button">
+          <button class="convert-button" onclick="conversion()">CONVERT</button>
+          <div class="convert-rate">
+            1 <label id="selected-currency-one"> USD </label> =
+            <label id="selected-currency-two"></label
+            ><label id="selected-number">INR</label>
+          </div>
+        </div>
+        <div class="currency-two">
+          <select id="select-currency-two" class="select-currency">
+            <option value="AED">AED</option>
+            <option value="ARS">ARS</option>
+            <option value="AUD">AUD</option>
+            <option value="BGN">BGN</option>
+            <option value="BRL">BRL</option>
+            <option value="BSD">BSD</option>
+            <option value="CAD">CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CLP">CLP</option>
+            <option value="CNY">CNY</option>
+            <option value="COP">COP</option>
+            <option value="CZK">CZK</option>
+            <option value="DKK">DKK</option>
+            <option value="DOP">DOP</option>
+            <option value="EGP">EGP</option>
+            <option value="EUR">EUR</option>
+            <option value="FJD">FJD</option>
+            <option value="GBP">GBP</option>
+            <option value="GBP">GTQ</option>
+            <option value="INR" selected="">INR</option>
+          </select>
+          <input type="number" class="select-input" id="resultNumber" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
