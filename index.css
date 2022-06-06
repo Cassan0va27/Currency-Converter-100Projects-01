@@ -9,7 +9,7 @@
 #15133C dark blue */
 .main-body{
    padding-top: 0;
-    min-height: 100vh;
+    min-height: 95vh;
     padding-top: 2rem;
     background-color: #F1EEE9;
     display: flex;
@@ -109,3 +109,11 @@
     font-size: 1.2rem;
     height: 44px;
 }
+
+
+@media only screen and (min-width: 786px){
+    .img{
+        width: 20%;
+        height: 50%;
+    }
+} 
